@@ -1,0 +1,128 @@
+{
+  "name": "music-recommendation-backend",
+  "version": "2.0.0",
+  "description": "AI music recommendations, official YouTube playback, and full-track uploads",
+  "main": "server.js",
+  "bin": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build:frontend": "npm --prefix client run build",
+    "build:exe": "powershell -ExecutionPolicy Bypass -File scripts/build-exe.ps1",
+    "test": "jest --detectOpenHandles --passWithNoTests",
+    "test:audio": "node scripts/verifyAudioLibrary.js",
+    "test:ui": "node scripts/verifyMusicUI.js",
+    "test:coverage": "jest --detectOpenHandles --coverage",
+    "test:watch": "jest --watch",
+    "seed": "node scripts/importYouTubeCatalog.js",
+    "catalog:bollywood": "node scripts/importYouTubeCatalog.js",
+    "catalog:verify": "node scripts/importYouTubeCatalog.js --verify",
+    "seed:previews": "node scripts/seedDatabase.js",
+    "catalog:import": "node scripts/importFullCatalog.js",
+    "seed:reset": "node scripts/seedDatabase.js --reset",
+    "migrate:gamification": "node scripts/backfillGamification.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "secure": "npm audit",
+    "migrate": "migrate-mongo up"
+  },
+  "keywords": [
+    "music",
+    "recommendation",
+    "spotify",
+    "ai",
+    "machine-learning",
+    "nodejs",
+    "express",
+    "mongodb"
+  ],
+  "author": "Durgeshmundada",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.5.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.0",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.3.2",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "mongo-sanitize": "^1.1.0",
+    "mongoose": "^7.5.0",
+    "multer": "^2.4.0",
+    "music-metadata": "^12.1.0",
+    "validator": "^13.11.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "eslint": "^8.51.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "jest": "^29.7.0",
+    "migrate-mongo": "^11.0.0",
+    "nodemon": "^3.0.1",
+    "pkg": "^5.8.1",
+    "prettier": "^3.0.3",
+    "supertest": "^6.3.3"
+  },
+  "pkg": {
+    "assets": [
+      "public/**/*",
+      "client/dist/**/*",
+      ".env.example"
+    ],
+    "targets": [
+      "node18-win-x64"
+    ],
+    "outputPath": "dist-exe"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules",
+      "logs",
+      "*.log"
+    ],
+    "watch": [
+      "."
+    ],
+    "ext": "js",
+    "env": {
+      "NODE_ENV": "development"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "arrowParens": "always"
+  },
+  "jest": {
+    "roots": ["<rootDir>/__tests__"],
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!node_modules/**",
+      "!coverage/**",
+      "!logs/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    }
+  }
+}

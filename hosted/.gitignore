@@ -1,0 +1,11 @@
+node_modules/
+client/node_modules/
+client/dist/
+dist/
+.env
+.env.*
+!.env.example
+.sites-runtime/
+.wrangler/
+logs/
+test-results/

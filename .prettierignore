@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-exe/
+coverage/
+logs/
+backups/
+storage/
+.venv/
+package-lock.json
+*.csv
+*.pkl

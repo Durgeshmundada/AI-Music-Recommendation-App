@@ -1,0 +1,14 @@
+{
+  "name": "bollywood-music-studio-hosted",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": ["client"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "db:generate": "drizzle-kit generate",
+    "test": "node scripts/verify-hosted.mjs"
+  },
+  "dependencies": { "music-metadata": "12.1.0", "drizzle-orm": "^0.45.1" },
+  "devDependencies": { "esbuild": "^0.25.12", "drizzle-kit": "^0.31.9", "miniflare": "4.20260730.0", "@playwright/test": "^1.64.0" }
+}

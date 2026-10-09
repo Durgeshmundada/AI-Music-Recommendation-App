@@ -1,0 +1,39 @@
+node_modules/
+client/node_modules/
+client/dist/
+.env
+client/.env
+storage/
+backups/
+logs/
+.venv/
+__pycache__/
+dist-exe/
+coverage/
+test-results/
+
+# Local configuration and credentials (templates are safe to publish)
+.env.*
+!.env.example
+*.pem
+*.key
+.openai/
+.sites-runtime/
+.wrangler/
+
+# Generated output and machine-specific files
+dist/
+*.log
+*.py[cod]
+*.pkl
+*.h5
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local datasets and generated import reports
+spotify_songs*.csv
+data/catalog-import-report.json
+data/bollywood-staged.json
+data/bollywood-unmatched.json
